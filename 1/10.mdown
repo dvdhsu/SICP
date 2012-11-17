@@ -1,0 +1,17 @@
+Exercise 10
+=========================
+
+
+Part 1
+--------------------
+	* After some working, (A 1 n) is revealed to be 2 ^ n. So, (A 1 10) = 2 ^ 10.
+	* This requires more work, but after some experimentation, (A 2 n) = 2 ^ 2 ^ 2 ^ 2, n times. So, (A 2 4) is 2 ^ 2 ^ 2 ^ 2, or 65536. 
+	* This requires the most work of all. The answer turns out to be the same as the above: 65536.  
+
+
+Part 2
+-----------------
+	* After a little work, (A 0 n) is seen to equal 2 * n.
+	* As explained in 1b, (A 1 n) is 2 ^ n.
+	* As explained in 1c, (A 2 n) is 2 ^ 2 ^ 2 ..., n times. This is apparently known as a [tetration](http://en.wikipedia.org/wiki/Tetration). I'm a little skeptical that 2 ^ 2 ^ 2 is the "concise mathematical definition" for (h n), but most sites around seem to give this as the answer: [Bill the Lizard](http://www.billthelizard.com/2009/11/sicp-exercises-19-and-110.html), [Drewiki](http://wiki.drewhess.com/wiki/SICP_exercise_1.10), and [SchemeWiki](http://community.schemewiki.org/?sicp-ex-1.10).
+
