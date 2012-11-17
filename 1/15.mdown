@@ -1,0 +1,8 @@
+#Exercise 15
+
+
+##Part 1
+Note that each time (p n) is evaluated, the argument, n, is divided by 3. So, we need to apply (p n) x times, such that n is lower than .1. This is the inequality (n / 3 ^ x) < .1; since 3 ^ x and .1 are both positive, we arrive at (10 * n < 3 ^ x). Taking logs, we get lg3(10 * n) < x. Because x must be an integer, and because x is greater than lg3(10 * n), we must take the ceiling of lg3(10 * n).  
+
+##Part 2
+Because the number of times we apply (p n) is equivalent to the ceiling of lg3(10 * n), this function has logarithmic growth with respect to n. Note this better than linear time.
