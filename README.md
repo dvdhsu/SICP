@@ -1,4 +1,4 @@
 SICP
 ====
 
-Exercises from Structure and Interpretation of Computer Programs
+Exercises from Structure and Interpretation of Computer Programs in MIT/GNU Scheme. 
