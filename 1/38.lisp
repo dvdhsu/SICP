@@ -18,7 +18,7 @@
 				(cont-frac-iter-helper (- stage 1) (/ (n stage) (+ (d stage) accu)))))
 		(cont-frac-iter-helper k 0))
 
-; calling both functions
+; calling the two procedures
 
 (cont-frac-recur (lambda (x) 1.0) bottom 999)
 
