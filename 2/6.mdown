@@ -1,0 +1,47 @@
+## Exercise 2.6
+
+Let's examine what happens when we evaluate (add-1 zero):
+
+	(add-1 zero)
+	(add-1 (lambda (f) (lambda (x) x)))
+	(lambda (f) (lambda (x) (f (((lambda (f) (lambda (x) x)) f) x))))
+	(lambda (f) (lambda (x) (f x)))
+	(f x)
+
+Because (add-1 zero) is the representation of 1, and because (f x) is equivalent to (add-1 zero), 1 is represented as (f x).
+
+Let's define it:
+
+	(define one (lambda (f) (lambda (x) x)))
+
+Now let's see what happens when we evaluate (add-1 one). 
+
+	(add-1 one)
+	(add-1 (lambda (f) (lambda (x) (f x))))
+	(lambda (f) (lambda (x) (f (((lambda (f) (lambda (x) (f x))) f) x))))
+	(lambda (f) (lambda (x) (f (f x))))
+	(f (f x))
+
+Well, it looks like representing the numeral b would just be (f (f (f (f (f ... x))))) b times. This leads to a definition of addition for the Church Numerals. 
+
+	(define (church-addition a b)
+		(lambda (f) (lambda (x) ((a f) ((b f) x)))))
+
+To test this, let's write a simple function:
+
+	(define (inc x) (+ x 1))
+
+Let's also define two:
+
+	(define two (add-1 one))
+
+Now, to ((zero inc) 1) (returns 1, ((one inc) 1) returns 2, ((two inc) 1) returns 3. Good.
+
+We can test our church-addition function now. 
+
+	(((church-addition one two) inc) 3)
+
+	(((church-addition zero one) inc) 4)
+
+Indeed, both work. 
+
