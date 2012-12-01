@@ -1,0 +1,23 @@
+##Exercise 2.5
+
+Note that for all pairs of positive integers, a and b, (2 ^ a) * (3 ^ b) is a unique product. This can be shown via induction, with base case (a = 1) and (b = 1). So, now, we can just implement the function cons. Note that this procedure will only work if a and b are natural numbers. 
+
+	(define (fake-cons a b) (* (expt 2 a) (expt 3 b)))
+
+Now, to retriev(face the numbers a and b, we just repeatedly factor out 2s and 3s, respectively.
+
+	(define (car x) (factor x 2 0))
+
+	(define (cdr x) (factor x 3 0))
+	
+	(define (factor x a count)
+			(if (= (remainder x a) 0) (factor (/ x a) a (+ count 1))
+				count))
+
+Let's test this:
+
+	(car (fake-cons 4 2))
+
+	(cdr (fake-cons 99 2))
+
+Indeed, they return 4 and 2. This method works. 
