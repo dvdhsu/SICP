@@ -1,0 +1,29 @@
+## Exercise 2.9
+
+From the definitions of (add-interval) and (sub-interval), we can see that the answer is "fixed" in the sense that the algorithm is entirely determinant on the inputs. For (mul-interval) and (div-interval), however, we see that the algorithm is determinant on both the inputs and the max/min of the result of somehow combining the two intervals. 
+
+	(define (add-interval x y)
+     (make-interval (+ (lower-bound x) (lower-bound y))
+                    (+ (upper-bound x) (upper-bound y))))
+
+    (define (sub-interval a b) 
+		(make-interval (- (lower-bound a) (upper-bound b)) 
+				  (- (upper-bound a) (lower-bound b))))
+
+	 (define (mul-interval x y)
+     	(let ((p1 (* (lower-bound x) (lower-bound y)))
+			(p2 (* (lower-bound x) (upper-bound y)))
+            (p3 (* (upper-bound x) (lower-bound y)))
+            (p4 (* (upper-bound x) (upper-bound y))))
+       		(make-interval (min p1 p2 p3 p4)
+                      (max p1 p2 p3 p4))))
+
+	(define (div-interval x y)
+     (mul-interval x
+                   (make-interval (/ 1.0 (upper-bound y))
+                                  (/ 1.0 (lower-bound y)))))
+
+Namely, (mul-interval) must run some calculations to determine the minimum and maximum of the results of multiplying the 4 bounds together, in order to give an answer. Thus, the width of the resulting interval isn't contained entirely in the arguments passed: (mul-interval) actually has to run some calculations itself. This is in contrast with (add-interval) and (sub-interval), which know exactly which bounds to add to give the interval required. 
+
+Thus, for (add-interval) and (sub-interval), the width of the resulting interval is a direct function of the width of the inputted intervals. For, (mul-interval) and (div-interval), the width of the resulting interval is not a direct function of the width of the inputted intervals. 
+
