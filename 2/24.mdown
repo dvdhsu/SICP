@@ -1,0 +1,15 @@
+## Exercise 2.24
+
+	(list 1 (list 2 (list 3 4)))
+
+The above expression should return a list that has two elements: 1 and another list. The other list should be a list with two elements as well: 2 and another list. This last list has 2 elements: 3 and 4. 
+
+Running this through the Scheme interpreter, the above seems correct:
+
+	(length (list 1 (list 2 (list 3 4))))
+	
+	Value: 2
+
+	length (list 2 (list 3 4)))
+
+	Value: 2

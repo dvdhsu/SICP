@@ -1,0 +1,5 @@
+## Exercise 2.19; Incomplete
+
+It seems like first-denomination can be implemented with 'car', except-first-denomination with 'cdr', and no-more with 'null?'.
+
+The order shouldn't matter, since we're still looping through all the available coins and considering whether to include them (in the else of the conditional). 

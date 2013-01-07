@@ -1,0 +1,13 @@
+## Exercise 2.22
+
+The first method doesn't work because Louis Reasoner is creating his list from right to left with the line 
+
+	(cons (square (car things)) answer)
+
+Because he is reading 'things' from left to right with 'car', but builds his answer right to left by 'con'sing the new (car things), his returned answer is reversed. 
+
+The second method doesn't work either, since the initial value of answer in this line
+
+	(cons answer (square (car things)))
+
+is 'nil'. Now, the first element of the list is 'nil', which is not what Louis Reasoner wants. It also doesn't produce a list, because of the behavior of 'append' when given both element / list arguments. 
